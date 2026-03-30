@@ -83,7 +83,7 @@ export default function JourneyNode({ stop, isActive, index, onClick, x, y }: Jo
         fill={isActive ? stop.color : 'currentColor'}
         fontWeight={isActive ? '700' : '400'}
       >
-        {stop.name}
+        {/* name rendered via aria-label on parent g; no duplicate text */}
       </text>
     </motion.g>
   );
