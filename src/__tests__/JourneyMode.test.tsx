@@ -4,6 +4,9 @@ import JourneyMode from '@/components/JourneyMode';
 jest.mock('framer-motion', () => ({
   motion: {
     div: ({ children, style, className }: any) => <div style={style} className={className}>{children}</div>,
+    button: ({ children, onClick, style, className, 'aria-label': ariaLabel }: any) => (
+      <button onClick={onClick} style={style} className={className} aria-label={ariaLabel}>{children}</button>
+    ),
     g: ({ children, onClick, role, 'aria-label': ariaLabel, style }: any) => (
       <g onClick={onClick} role={role} aria-label={ariaLabel} style={style}>{children}</g>
     ),
@@ -45,7 +48,8 @@ describe('JourneyMode', () => {
   it('shows stop detail when a stop node is clicked', () => {
     render(<JourneyMode onTileOpen={() => {}} />);
     fireEvent.click(screen.getByRole('button', { name: /stop 1/i }));
-    expect(screen.getByText('Empathy')).toBeInTheDocument();
+    // Stop name appears in both SVG label and detail panel heading — check detail panel subtitle
+    expect(screen.getByText(/Where everything begins/i)).toBeInTheDocument();
   });
 
   it('shows Stop Tour button when tour is activated', () => {
@@ -57,11 +61,10 @@ describe('JourneyMode', () => {
   it('auto-advances to stop 2 after 3200ms when tour is active', () => {
     render(<JourneyMode onTileOpen={() => {}} />);
     fireEvent.click(screen.getByText(/guided tour/i));
-    // After tour starts, stop 1 detail should show
-    expect(screen.getByText('Empathy')).toBeInTheDocument();
-    // Advance timer
+    // After tour starts at stop 1, check its subtitle
+    expect(screen.getByText(/Where everything begins/i)).toBeInTheDocument();
     act(() => { jest.advanceTimersByTime(3200); });
-    // Stop 2 detail should now show
-    expect(screen.getByText('Discovery')).toBeInTheDocument();
+    // Stop 2 detail shows
+    expect(screen.getByText(/Surface what matters/i)).toBeInTheDocument();
   });
 });

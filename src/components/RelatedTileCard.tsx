@@ -22,17 +22,14 @@ export default function RelatedTileCard({ tile, onOpen, index }: RelatedTileCard
   const [r, g, b] = hexToRgb(tile.color);
 
   return (
-    <motion.div
+    <motion.button
       onClick={() => onOpen(tile)}
       initial={{ opacity: 0, y: 8 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ delay: index * 0.05, duration: 0.25 }}
       whileHover={{ y: -2 }}
       whileTap={{ scale: 0.97 }}
-      role="button"
-      tabIndex={0}
-      onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') onOpen(tile); }}
-      className="flex items-center gap-3 p-3 rounded-xl text-left w-full cursor-pointer"
+      className="flex items-center gap-3 p-3 rounded-xl text-left w-full"
       style={{
         background: `rgba(${r},${g},${b},0.08)`,
         border: `1px solid rgba(${r},${g},${b},0.2)`,
@@ -48,6 +45,6 @@ export default function RelatedTileCard({ tile, onOpen, index }: RelatedTileCard
           {tile.badge}
         </p>
       </div>
-    </motion.div>
+    </motion.button>
   );
 }
