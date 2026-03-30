@@ -14,12 +14,10 @@ const ThemeContext = createContext<ThemeContextValue>({
 });
 
 export function ThemeProvider({ children }: { children: ReactNode }) {
-  const [theme, setTheme] = useState<Theme>('dark');
-
-  useEffect(() => {
-    const saved = localStorage.getItem('tg-launchpad-theme') as Theme | null;
-    if (saved === 'light') setTheme('light');
-  }, []);
+  const [theme, setTheme] = useState<Theme>(() => {
+    if (typeof window === 'undefined') return 'dark';
+    return (localStorage.getItem('tg-launchpad-theme') as Theme) || 'dark';
+  });
 
   useEffect(() => {
     document.documentElement.classList.toggle('light', theme === 'light');
