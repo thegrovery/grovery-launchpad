@@ -1,8 +1,29 @@
 'use client';
 
+import { ComponentType, SVGProps } from 'react';
 import { motion } from 'framer-motion';
-import Image from 'next/image';
 import { Tile } from '@/types';
+import {
+  BrandPulseIcon,
+  FragmentIcon,
+  AlleIcon,
+  GreenhouseIcon,
+  AlignIcon,
+  StrategyIcon,
+  GrowIcon,
+} from '@/components/icons/TileIcons';
+
+type SvgIcon = ComponentType<SVGProps<SVGSVGElement>>;
+
+const ICON_MAP: Record<string, SvgIcon> = {
+  '/icons/BrandPulse.svg': BrandPulseIcon,
+  '/icons/Fragment.svg': FragmentIcon,
+  '/icons/Alle.svg': AlleIcon,
+  '/icons/Greenhouse.svg': GreenhouseIcon,
+  '/icons/Align.svg': AlignIcon,
+  '/icons/Strategy.svg': StrategyIcon,
+  '/icons/Grow.svg': GrowIcon,
+};
 
 interface RelatedTileCardProps {
   tile: Tile;
@@ -36,7 +57,12 @@ export default function RelatedTileCard({ tile, onOpen, index }: RelatedTileCard
       }}
       aria-label={`Open ${tile.name}`}
     >
-      <Image src={tile.icon} alt={tile.name} width={28} height={28} />
+      {(() => {
+        const Icon = ICON_MAP[tile.icon];
+        return Icon ? (
+          <Icon width={28} height={28} style={{ color: tile.color, flexShrink: 0 }} />
+        ) : null;
+      })()}
       <div>
         <p className="text-sm font-semibold" style={{ color: 'var(--color-text)' }}>
           {tile.name}
