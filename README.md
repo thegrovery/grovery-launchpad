@@ -26,7 +26,7 @@ The Launchpad runs in two modes:
 | Animation | Framer Motion |
 | State | React `useState` / `useReducer` |
 | Content | Flat TypeScript data files |
-| Deployment | Vercel |
+| Deployment | Netlify |
 
 No CMS, no external state library, no backend. Content lives in TypeScript data files — fast to edit, easy to version.
 
@@ -132,7 +132,7 @@ npm run test:watch # Jest in watch mode
 
 ## Deployment
 
-Deployed to Vercel. Every PR generates a preview URL automatically.
+Deployed to Netlify. Every PR generates a preview URL automatically.
 
 Target deployment: `thegrovery.com/launchpad` or `launchpad.thegrovery.com` (TBD).
 
