@@ -11,6 +11,9 @@ import {
   AlignIcon,
   StrategyIcon,
   GrowIcon,
+  AISparkleIcon,
+  BrandHubIcon,
+  AlignmentStrategyIcon,
 } from '@/components/icons/TileIcons';
 
 type SvgIcon = ComponentType<SVGProps<SVGSVGElement>>;
@@ -23,6 +26,9 @@ const ICON_MAP: Record<string, SvgIcon> = {
   '/icons/Align.svg': AlignIcon,
   '/icons/Strategy.svg': StrategyIcon,
   '/icons/Grow.svg': GrowIcon,
+  '/icons/AISparkle.svg': AISparkleIcon,
+  '/icons/BrandHub.svg': BrandHubIcon,
+  '/icons/AlignmentStrategy.svg': AlignmentStrategyIcon,
 };
 
 interface RelatedTileCardProps {
