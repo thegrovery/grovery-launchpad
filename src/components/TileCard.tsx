@@ -1,8 +1,29 @@
 'use client';
 
+import { ComponentType, SVGProps } from 'react';
 import { motion } from 'framer-motion';
-import Image from 'next/image';
 import { Tile } from '@/types';
+import {
+  BrandPulseIcon,
+  FragmentIcon,
+  AlleIcon,
+  GreenhouseIcon,
+  AlignIcon,
+  StrategyIcon,
+  GrowIcon,
+} from '@/components/icons/TileIcons';
+
+type SvgIcon = ComponentType<SVGProps<SVGSVGElement>>;
+
+const ICON_MAP: Record<string, SvgIcon> = {
+  '/icons/BrandPulse.svg': BrandPulseIcon,
+  '/icons/Fragment.svg': FragmentIcon,
+  '/icons/Alle.svg': AlleIcon,
+  '/icons/Greenhouse.svg': GreenhouseIcon,
+  '/icons/Align.svg': AlignIcon,
+  '/icons/Strategy.svg': StrategyIcon,
+  '/icons/Grow.svg': GrowIcon,
+};
 
 interface TileCardProps {
   tile: Tile;
@@ -95,13 +116,19 @@ export default function TileCard({ tile, onOpen, index = 0 }: TileCardProps) {
 
       {/* Icon */}
       <div className="relative flex-1 flex items-center justify-center">
-        <Image
-          src={tile.icon}
-          alt={tile.name}
-          width={100}
-          height={100}
-          style={{ filter: `drop-shadow(0 0 10px rgba(${r},${g},${b},0.5))` }}
-        />
+        {(() => {
+          const Icon = ICON_MAP[tile.icon];
+          return Icon ? (
+            <Icon
+              width={100}
+              height={100}
+              style={{
+                color: tile.color,
+                filter: `drop-shadow(0 0 10px rgba(${r},${g},${b},0.5))`,
+              }}
+            />
+          ) : null;
+        })()}
       </div>
 
       {/* Name & tagline */}
