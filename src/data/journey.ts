@@ -17,7 +17,7 @@ export const journeyStops: JourneyStop[] = [
     description: "Discovery is where listening becomes learning. We bring structure to the chaos of competing priorities, unclear data, and organizational assumptions — and we surface what actually matters.",
     soWhat: "Clarity before direction. Always.",
     color: '#89BC3E',
-    relatedTiles: ['discovery-greenhouse'],
+    relatedTiles: ['discovery-greenhouse', 'brandpulse', 'brandpulse-pro', 'personagen'],
   },
   {
     id: 3,
@@ -35,7 +35,7 @@ export const journeyStops: JourneyStop[] = [
     description: "Activate is where strategy meets execution. This is where The Grovery's proprietary tools come to life — powering the research, the intelligence, and the infrastructure your brand needs to move.",
     soWhat: "Tools that work as hard as your team.",
     color: '#5869FC',
-    relatedTiles: ['brandpulse', 'brandpulse-pro', 'personifi', 'alle'],
+    relatedTiles: ['brandpulse', 'brandpulse-pro', 'personifi', 'personagen', 'alle'],
   },
   {
     id: 5,
