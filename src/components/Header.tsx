@@ -1,8 +1,54 @@
 'use client';
 
 import Image from 'next/image';
+import { useState, useEffect } from 'react';
+import { AnimatePresence, motion } from 'framer-motion';
 import { Mode } from '@/types';
 import { useTheme } from '@/context/ThemeContext';
+
+const TAGLINES = [
+  ['Tools.', 'Process.', 'Proof.'],
+  ['Align.', 'Advise.', 'Activate.'],
+  ['Internal Alignment.', 'External Impact.'],
+  ['Turn Misalignment', 'into Momentum.'],
+];
+
+const wordVariants = {
+  initial: { opacity: 0, y: 7, filter: 'blur(4px)' },
+  enter: { opacity: 1, y: 0, filter: 'blur(0px)', transition: { duration: 0.38, ease: [0.25, 0.1, 0.25, 1] as const } },
+  exit: { opacity: 0, y: -5, filter: 'blur(2px)', transition: { duration: 0.18, ease: 'easeIn' as const } },
+};
+
+function AnimatedTagline() {
+  const [index, setIndex] = useState(0);
+
+  useEffect(() => {
+    const id = setInterval(() => setIndex(i => (i + 1) % TAGLINES.length), 4500);
+    return () => clearInterval(id);
+  }, []);
+
+  return (
+    <div className="hidden md:flex items-center h-5 overflow-hidden">
+      <AnimatePresence mode="wait">
+        <motion.span
+          key={index}
+          className="flex gap-2 text-sm font-semibold tracking-widest uppercase whitespace-nowrap"
+          style={{ color: 'var(--color-muted)', fontFamily: 'degular, sans-serif' }}
+          initial="initial"
+          animate="enter"
+          exit="exit"
+          variants={{ enter: { transition: { staggerChildren: 0.13 } }, exit: { transition: { staggerChildren: 0.07, staggerDirection: -1 } } }}
+        >
+          {TAGLINES[index].map((chunk, i) => (
+            <motion.span key={i} variants={wordVariants}>
+              {chunk}
+            </motion.span>
+          ))}
+        </motion.span>
+      </AnimatePresence>
+    </div>
+  );
+}
 
 interface HeaderProps {
   mode: Mode;
@@ -35,6 +81,8 @@ function MoonIcon() {
 
 export default function Header({ mode, onModeChange }: HeaderProps) {
   const { theme, toggle } = useTheme();
+  const [mounted, setMounted] = useState(false);
+  useEffect(() => setMounted(true), []);
 
   return (
     <header
@@ -47,7 +95,7 @@ export default function Header({ mode, onModeChange }: HeaderProps) {
     >
       {/* Logo */}
       <Image
-        src="/Groverylogo_white.svg"
+        src={mounted && theme === 'light' ? '/Groverylogo_fullcolor.svg' : '/Groverylogo_white.svg'}
         alt="The Grovery"
         width={140}
         height={36}
@@ -55,12 +103,7 @@ export default function Header({ mode, onModeChange }: HeaderProps) {
       />
 
       {/* Tagline */}
-      <p
-        className="hidden md:block text-sm font-semibold tracking-widest uppercase"
-        style={{ color: 'var(--color-muted)', fontFamily: 'degular, sans-serif' }}
-      >
-        Tools. Process. Proof.
-      </p>
+      <AnimatedTagline />
 
       {/* Controls */}
       <div className="flex items-center gap-3">
@@ -95,7 +138,7 @@ export default function Header({ mode, onModeChange }: HeaderProps) {
             color: 'var(--color-muted)',
           }}
         >
-          {theme === 'light' ? <MoonIcon /> : <SunIcon />}
+          {mounted && theme === 'light' ? <MoonIcon /> : <SunIcon />}
         </button>
       </div>
     </header>
