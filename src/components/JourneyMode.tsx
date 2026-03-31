@@ -57,10 +57,10 @@ export default function JourneyMode({ onTileOpen }: JourneyModeProps) {
     <div className="w-full h-full flex flex-col lg:flex-row">
       {/* Path column */}
       <div
-        className="relative lg:w-2/5 flex-shrink-0 flex items-center justify-center p-6"
+        className="relative lg:w-1/2 flex-shrink-0 flex items-center justify-center p-6"
         style={{ borderRight: '1px solid var(--color-border)' }}
       >
-        <div className="w-full max-w-xs h-full max-h-[680px]">
+        <div className="w-full h-full">
           <JourneyPath
             stops={journeyStops}
             activeStop={activeStop}
@@ -71,7 +71,7 @@ export default function JourneyMode({ onTileOpen }: JourneyModeProps) {
       </div>
 
       {/* Detail column */}
-      <div className="lg:w-3/5 flex flex-col overflow-hidden">
+      <div className="lg:w-1/2 flex flex-col overflow-hidden">
         {/* Placeholder when no stop selected */}
         <AnimatePresence>
           {!activeStop && (

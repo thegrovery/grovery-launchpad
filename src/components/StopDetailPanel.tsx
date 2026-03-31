@@ -37,7 +37,7 @@ export default function StopDetailPanel({ stop, onTileOpen }: StopDetailPanelPro
           {/* Stop number + name */}
           <div>
             <span
-              className="text-5xl font-bold block mb-1"
+              className="text-6xl font-medium tracking-tighter block mb-1"
               style={{
                 color: stop.color,
                 fontFamily: 'degular, sans-serif',
@@ -47,7 +47,7 @@ export default function StopDetailPanel({ stop, onTileOpen }: StopDetailPanelPro
               {String(stop.id).padStart(2, '0')}
             </span>
             <h2
-              className="text-3xl font-bold"
+              className="text-6xl font-medium tracking-tighter"
               style={{ color: 'var(--color-text)', fontFamily: 'degular, sans-serif' }}
             >
               {stop.name}

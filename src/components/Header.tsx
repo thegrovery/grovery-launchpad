@@ -7,10 +7,9 @@ import { Mode } from '@/types';
 import { useTheme } from '@/context/ThemeContext';
 
 const TAGLINES = [
-  ['Tools.', 'Process.', 'Proof.'],
-  ['Align.', 'Advise.', 'Activate.'],
   ['Internal Alignment.', 'External Impact.'],
-  ['Turn Misalignment', 'into Momentum.'],
+  ['Align.', 'Advise.', 'Activate.'],
+  ['Tools.', 'Process.', 'Proof.'],
 ];
 
 const wordVariants = {

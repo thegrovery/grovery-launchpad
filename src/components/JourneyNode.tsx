@@ -38,7 +38,7 @@ export default function JourneyNode({ stop, isActive, index, onClick, x, y }: Jo
         <motion.circle
           cx={x}
           cy={y}
-          r={28}
+          r={40}
           fill="none"
           stroke={stop.color}
           strokeWidth={2}
@@ -52,8 +52,8 @@ export default function JourneyNode({ stop, isActive, index, onClick, x, y }: Jo
       <motion.circle
         cx={x}
         cy={y}
-        r={20}
-        fill={isActive ? stop.color : `rgba(${r},${g},${b},0.15)`}
+        r={30}
+        fill={isActive ? stop.color : `rgba(${r},${g},${b},0.9)`}
         stroke={stop.color}
         strokeWidth={2}
         animate={{ scale: isActive ? 1.08 : 1 }}
@@ -63,25 +63,25 @@ export default function JourneyNode({ stop, isActive, index, onClick, x, y }: Jo
       {/* Stop number */}
       <text
         x={x}
-        y={y + 5}
+        y={y + 6}
         textAnchor="middle"
-        fontSize="13"
+        fontSize="16"
         fontWeight="700"
         fontFamily="degular, sans-serif"
-        fill={isActive ? '#06100C' : stop.color}
+        fill={isActive ? '#06100C' : '#FFFFFF'}
       >
         {stop.id}
       </text>
 
       {/* Label — positioned left or right based on x position */}
       <text
-        x={x < 200 ? x - 30 : x + 30}
-        y={y + 5}
+        x={x < 200 ? x - 42 : x + 42}
+        y={y + 6}
         textAnchor={x < 200 ? 'end' : 'start'}
-        fontSize="13"
+        fontSize="18"
         fontFamily="degular, sans-serif"
         fill={isActive ? stop.color : 'currentColor'}
-        fontWeight={isActive ? '700' : '400'}
+        fontWeight={isActive ? '600' : '400'}
       >
         {stop.name}
       </text>

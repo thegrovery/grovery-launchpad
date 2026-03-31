@@ -25,8 +25,8 @@ export default function LaunchpadApp() {
       {/* Header — always visible */}
       <Header mode={mode} onModeChange={setMode} />
 
-      {/* Content area — below header (pt-20 = header height) */}
-      <div className="pt-20 h-screen">
+      {/* Content area — starts below fixed header, fills exact remaining viewport */}
+      <div className="mt-20" style={{ height: 'calc(100vh - 5rem)' }}>
         <AnimatePresence mode="wait">
           {mode === 'grid' ? (
             <motion.div

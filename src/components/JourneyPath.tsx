@@ -32,7 +32,7 @@ interface JourneyPathProps {
 export default function JourneyPath({ stops, activeStop, tourActive, onStopClick }: JourneyPathProps) {
   return (
     <svg
-      viewBox="0 0 380 680"
+      viewBox="-60 -20 500 720"
       className="w-full h-full"
       aria-label="Grovery methodology journey path"
     >

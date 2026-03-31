@@ -5,6 +5,7 @@ import './globals.css';
 export const metadata: Metadata = {
   title: 'Grovery Launchpad',
   description: "An interactive showcase of The Grovery's tools, process, and methodology.",
+  icons: { icon: '/favicon.ico' },
 };
 
 export default function RootLayout({

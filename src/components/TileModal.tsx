@@ -81,7 +81,7 @@ export default function TileModal({ tile, onClose }: TileModalProps) {
                     ✕
                   </button>
                 </div>
-                <h2 className="text-3xl font-bold mb-1" style={{ color: 'var(--color-text)' }}>
+                <h2 className="text-5xl font-medium tracking-tighter mb-1" style={{ color: 'var(--color-text)', fontFamily: 'degular, sans-serif' }}>
                   {tile.name}
                 </h2>
                 <p className="text-base italic" style={{ color: 'var(--color-muted)' }}>
