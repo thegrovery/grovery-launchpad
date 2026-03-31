@@ -26,7 +26,7 @@ export const journeyStops: JourneyStop[] = [
     description: "Strategy is where insight becomes direction. We translate what we've learned into a clear path forward — one your whole organization can understand, believe in, and execute against.",
     soWhat: "Direction your team can actually own.",
     color: '#037B98',
-    relatedTiles: ['strategy', 'workshops'],
+    relatedTiles: ['strategy', 'workshops', 'personagen'],
   },
   {
     id: 4,
