@@ -7,7 +7,7 @@ export type StopId = 1 | 2 | 3 | 4 | 5;
 export interface Tile {
   id: string;
   name: string;
-  badge: 'Tool' | 'Process' | 'Output';
+  badge: 'Tool' | 'Process' | 'Output' | 'Portfolio';
   tagline: string;
   description: string;
   detail: string;
