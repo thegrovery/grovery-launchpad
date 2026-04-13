@@ -4,22 +4,18 @@ import { motion } from 'framer-motion';
 import { JourneyStop, StopId } from '@/types';
 import JourneyNode from './JourneyNode';
 
-// Fixed node positions on the 380x680 SVG canvas
+// Fixed node positions on the 380x480 SVG canvas
 export const NODE_POSITIONS: readonly { x: number; y: number }[] = [
-  { x: 80,  y: 80  }, // Stop 1 — left
-  { x: 300, y: 210 }, // Stop 2 — right
-  { x: 80,  y: 340 }, // Stop 3 — left
-  { x: 300, y: 470 }, // Stop 4 — right
-  { x: 80,  y: 600 }, // Stop 5 — left
+  { x: 80,  y: 100 }, // Stop 1 — Align (left)
+  { x: 300, y: 300 }, // Stop 2 — Advise (right)
+  { x: 80,  y: 500 }, // Stop 3 — Activate (left)
 ];
 
-// S-curve cubic bezier connecting all 5 nodes
+// S-curve cubic bezier connecting all 3 nodes
 const PATH_D = `
-  M 80,80
-  C 80,145 300,145 300,210
-  C 300,275 80,275 80,340
-  C 80,405 300,405 300,470
-  C 300,535 80,535 80,600
+  M 80,100
+  C 80,200 300,200 300,300
+  C 300,400 80,400 80,500
 `.trim();
 
 interface JourneyPathProps {
@@ -32,7 +28,7 @@ interface JourneyPathProps {
 export default function JourneyPath({ stops, activeStop, tourActive, onStopClick }: JourneyPathProps) {
   return (
     <svg
-      viewBox="-60 -20 500 720"
+      viewBox="-60 -20 500 620"
       className="w-full h-full"
       aria-label="Grovery methodology journey path"
     >

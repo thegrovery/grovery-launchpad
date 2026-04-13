@@ -7,6 +7,7 @@ import Header from '@/components/Header';
 import IntroSplash from '@/components/IntroSplash';
 import GridMode from '@/components/GridMode';
 import JourneyMode from '@/components/JourneyMode';
+import StoryMode from '@/components/StoryMode';
 import TileModal from '@/components/TileModal';
 
 export default function LaunchpadApp() {
@@ -28,7 +29,7 @@ export default function LaunchpadApp() {
       {/* Content area — starts below fixed header, fills exact remaining viewport */}
       <div className="mt-20" style={{ height: 'calc(100vh - 5rem)' }}>
         <AnimatePresence mode="wait">
-          {mode === 'grid' ? (
+          {mode === 'grid' && (
             <motion.div
               key="grid"
               className="h-full"
@@ -39,7 +40,8 @@ export default function LaunchpadApp() {
             >
               <GridMode onTileOpen={setActiveModal} />
             </motion.div>
-          ) : (
+          )}
+          {mode === 'journey' && (
             <motion.div
               key="journey"
               className="h-full"
@@ -49,6 +51,18 @@ export default function LaunchpadApp() {
               transition={{ duration: 0.25, ease: 'easeInOut' }}
             >
               <JourneyMode onTileOpen={setActiveModal} />
+            </motion.div>
+          )}
+          {mode === 'story' && (
+            <motion.div
+              key="story"
+              className="h-full"
+              initial={{ opacity: 0, x: 120 }}
+              animate={{ opacity: 1, x: 0 }}
+              exit={{ opacity: 0, x: 120 }}
+              transition={{ duration: 0.25, ease: 'easeInOut' }}
+            >
+              <StoryMode />
             </motion.div>
           )}
         </AnimatePresence>

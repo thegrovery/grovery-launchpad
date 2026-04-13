@@ -32,7 +32,7 @@ export default function JourneyMode({ onTileOpen }: JourneyModeProps) {
     let current = 1;
     tourRef.current = setInterval(() => {
       current += 1;
-      if (current > 5) {
+      if (current > 3) {
         stopTour();
         return;
       }

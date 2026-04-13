@@ -1,8 +1,8 @@
 // src/types/index.ts
 
-export type Mode = 'grid' | 'journey';
+export type Mode = 'grid' | 'journey' | 'story';
 export type Theme = 'dark' | 'light';
-export type StopId = 1 | 2 | 3 | 4 | 5;
+export type StopId = 1 | 2 | 3;
 
 export interface Tile {
   id: string;
@@ -18,6 +18,15 @@ export interface Tile {
   journeyStop: StopId;
   featured?: boolean;
   screenshot?: string;
+}
+
+export interface StorySlide {
+  id: string;
+  title: string;
+  subtitle?: string;
+  body: string;
+  accent: string;
+  bullets?: string[];
 }
 
 export interface JourneyStop {

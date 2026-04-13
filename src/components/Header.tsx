@@ -111,7 +111,7 @@ export default function Header({ mode, onModeChange }: HeaderProps) {
           className="flex rounded-full p-1 gap-1"
           style={{ background: 'var(--color-surface-2)', border: '1px solid var(--color-border)' }}
         >
-          {(['grid', 'journey'] as Mode[]).map((m) => (
+          {(['grid', 'journey', 'story'] as Mode[]).map((m) => (
             <button
               key={m}
               onClick={() => onModeChange(m)}
